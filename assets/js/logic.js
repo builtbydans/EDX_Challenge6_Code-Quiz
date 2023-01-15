@@ -9,10 +9,10 @@ var startScreen = document.querySelector('#start-screen');
 var questionScreen = document.querySelector('#questions');
 var questionTitle = document.querySelector('#question-title');
 var questionChoices = document.querySelector('.choices');
+var time = 60;
 
 // Function that starts the timer when user presses start button
 function startQuiz() {
-  var time = 60;
   timer.textContent = time;
 
   startBtn.addEventListener('click', function() {
