@@ -3,10 +3,12 @@ var startBtn = document.querySelector('#start');
 var restartBtn = document.querySelector('#restart');
 var timer = document.querySelector('#time');
 var score = document.querySelector('#score');
-// Main title and start screen
+// Main title, start screen and end screen
 var mainTitle = document.querySelector('#main-title');
 var mainText = document.querySelector('#main-text');
 var startScreen = document.querySelector('#start-screen');
+var endScreen = document.querySelector('#end-screen');
+var finalScore = document.querySelector('#final-score');
 // Question screens
 var questionScreen = document.querySelector('#questions');
 var questionTitle = document.querySelector('#question-title');
@@ -66,7 +68,7 @@ function showQuestion() {
 function checkAnswer() {
   questionChoices.addEventListener('click', function(event) {
     if (event.target.textContent === questions[index].answer) {
-      scoreCounter += 10;
+      scoreCounter += 25;
       score.textContent = scoreCounter;
     } else {
       console.log('wrong')
@@ -80,12 +82,29 @@ function checkAnswer() {
 function nextQuestion() {
   // Add one to index to go to next question in array
   index++;
+  // Clear the buttons on the page
+  questionChoices.innerHTML = '';
+  // Loop over questions of said index and display those buttons
   for (var i = 0; i < questions.length; i++) {
-    questionTitle.innerHTML = questions[index].title;
-    questionChoices.innerHTML = '';
-    questionChoices.innerHTML += `<button>${questions[index].choices}</button>`;
+    // Making sure that it only loads 4 questions
+    if (index < 4) {
+      questionTitle.innerHTML = questions[index].title;
+      questionChoices.innerHTML += `<button>${questions[index].choices[i]}</button>`;
+    }
+    // Calling end Game function
+    endGame();
   }
 };
+
+function endGame() {
+  // Making sure all questions have been answered
+  if (index === 4) {
+    // Hiding screen and showing screen
+    questionScreen.className = 'hide';
+    endScreen.classList.remove('hide');
+    finalScore.textContent = scoreCounter;
+  }
+}
 
 // Calling functions
 startQuiz()

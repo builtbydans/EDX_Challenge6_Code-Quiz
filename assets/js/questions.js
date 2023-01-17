@@ -11,8 +11,8 @@ var questions = [
   },
   {
     title: 'A function is declared using ____________',
-    choices: ['Curly Brackets, Wibbly Wobbly, Parentheses, Commas'],
-    answer: 'Parantheses'
+    choices: ['Curly Brackets', 'Wibbly Wobbly', 'Parentheses', 'Commas'],
+    answer: 'Parentheses'
   },
   {
     title: 'What does NaN stand for?',
