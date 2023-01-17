@@ -9,17 +9,17 @@ var startScreen = document.querySelector('#start-screen');
 var questionScreen = document.querySelector('#questions');
 var questionTitle = document.querySelector('#question-title');
 var questionChoices = document.querySelector('.choices');
-var time = 60;
+var timeLeft = 60;
 
 // Function that starts the timer when user presses start button
 function startQuiz() {
-  timer.textContent = time;
+  timer.textContent = timeLeft;
 
   startBtn.addEventListener('click', function() {
     var downTimer = setInterval(function(){
-      timer.textContent = time--;
+      timer.textContent = timeLeft--;
 
-      if(time <= 0) {
+      if(timeLeft <= 0) {
         clearInterval(downTimer);
         questionScreen.className = 'hide';
         startScreen.className = 'show'
@@ -46,17 +46,6 @@ function beginQuestions() {
   };
   // askQuestions();
 };
-
-//Function that applies logic for questions
-// function askQuestions() {
-//   // logic for questions right/wrong
-//   if (questionChoices === 'correct') {
-//     console.log('that was right')
-//   } else {
-//     console.log('that was wrong')
-//   }
-// }
-
 
 // Calling functions
 startQuiz()
