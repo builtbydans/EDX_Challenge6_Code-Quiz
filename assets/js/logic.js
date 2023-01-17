@@ -62,7 +62,7 @@ function showQuestions() {
       console.log('right answer')
     } else {
       console.log('wrong')
-      timeLeft -= 10
+      timeLeft -= 10;
     }
 
     questionTitle.innerHTML = questions[1].title;
