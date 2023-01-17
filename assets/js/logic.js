@@ -10,7 +10,9 @@ var startScreen = document.querySelector('#start-screen');
 var questionScreen = document.querySelector('#questions');
 var questionTitle = document.querySelector('#question-title');
 var questionChoices = document.querySelector('.choices');
-var timeLeft = 3;
+var timeLeft = 60;
+// Misc variables
+var index = 0;
 
 // Function that starts the timer when user presses start button
 function startQuiz() {
@@ -49,23 +51,25 @@ function reloadQuiz() {
 
 // Function that begins the questions rounds
 function showQuestions() {
-  questions.forEach(function(element) {
+  // show first question
+  questionTitle.innerHTML = questions[0].title;
+  for (var i = 0; i < questions.length; i++) {
+    questionChoices.innerHTML += `<button class="question">${questions[index].choices[i]}</button>`;
+  };
 
-  });
+  questionChoices.addEventListener('click', function(event) {
+    if (event.target.textContent === questions[index].answer) {
+      console.log('right answer')
+    } else {
+      console.log('wrong')
+      timeLeft -= 10
+    }
 
-  console.log(loop)
-  // // show first question
-  // questionTitle.innerHTML = questions[0].title;
-  // for (var i = 0; i < questions.length; i++) {
-  //   questionChoices.innerHTML += `<button class="question">${questions[0].choices[i]}</button>`;
-  // };
-
-  // questionChoices.addEventListener('click', function() {
-  //   questionTitle.innerHTML = questions[1].title;
-  //   for (var i = 0; i < questions.length; i++) {
-  //     questionChoices.innerHTML = `<button class="question">${questions[1].choices[i]}</button>`;
-  //   };
-  // })
+    questionTitle.innerHTML = questions[1].title;
+    for (var i = 0; i < questions.length; i++) {
+      questionChoices.innerHTML = `<button class="question">${questions[1].choices[i]}</button>`;
+    };
+  })
 };
 
 // Calling functions
