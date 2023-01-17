@@ -1,5 +1,6 @@
 // All DOM elements called from index.html and stored
 var startBtn = document.querySelector('#start');
+var restartBtn = document.querySelector('#restart');
 var timer = document.querySelector('#time');
 // Main title and start screeen
 var mainTitle = document.querySelector('#main-title');
@@ -9,7 +10,7 @@ var startScreen = document.querySelector('#start-screen');
 var questionScreen = document.querySelector('#questions');
 var questionTitle = document.querySelector('#question-title');
 var questionChoices = document.querySelector('.choices');
-var timeLeft = 60;
+var timeLeft = 3;
 
 // Function that starts the timer when user presses start button
 function startQuiz() {
@@ -19,32 +20,52 @@ function startQuiz() {
     var downTimer = setInterval(function(){
       timer.textContent = timeLeft--;
 
-      if(timeLeft <= 0) {
+      if(timeLeft <= -1) {
         clearInterval(downTimer);
         questionScreen.className = 'hide';
         startScreen.className = 'show'
         mainTitle.textContent = 'Oops! You ran out of time!';
-        mainText.textContent += ' Press Start to try again!';
+        mainText.textContent += ' Press Restart to try again!';
+        startBtn.className = 'hide';
+        reloadQuiz();
       }
     },1000);
+    // hide the start screen & start questions
+    startScreen.className = 'hide';
+    questionScreen.className = 'show';
 
-    beginQuestions()
+    showQuestions();
+  });
+};
+
+// Function to reload the window so user can play again
+function reloadQuiz() {
+  restartBtn.classList.remove('hide');
+
+  restartBtn.addEventListener('click', function() {
+    location.reload()
   });
 };
 
 // Function that begins the questions rounds
-function beginQuestions() {
-  // hide the start screen & start questions
-  startScreen.className = 'hide';
-  questionScreen.className = 'show';
+function showQuestions() {
+  questions.forEach(function(element) {
 
-  // show questions
-  questionTitle.innerHTML = questions[0].question;
+  });
 
-  for (var i = 0; i < questions[0].choices.length; i++) {
-    questionChoices.innerHTML += `<button>${questions[0].choices[i]}</button>`;
-  };
-  // askQuestions();
+  console.log(loop)
+  // // show first question
+  // questionTitle.innerHTML = questions[0].title;
+  // for (var i = 0; i < questions.length; i++) {
+  //   questionChoices.innerHTML += `<button class="question">${questions[0].choices[i]}</button>`;
+  // };
+
+  // questionChoices.addEventListener('click', function() {
+  //   questionTitle.innerHTML = questions[1].title;
+  //   for (var i = 0; i < questions.length; i++) {
+  //     questionChoices.innerHTML = `<button class="question">${questions[1].choices[i]}</button>`;
+  //   };
+  // })
 };
 
 // Calling functions
