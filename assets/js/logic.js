@@ -36,6 +36,9 @@ function startQuiz() {
         startBtn.className = 'hide';
         reloadQuiz();
       }
+      if (index === 4) {
+        clearInterval(downTimer);
+      }
     },1000);
     // hide the start screen & start questions
     startScreen.className = 'hide';
