@@ -13,6 +13,7 @@ var finalScore = document.querySelector('#final-score');
 var questionScreen = document.querySelector('#questions');
 var questionTitle = document.querySelector('#question-title');
 var questionChoices = document.querySelector('.choices');
+var feedback = document.querySelector('.feedback');
 var timeLeft = 60;
 // Misc variables
 var index = 0;
@@ -73,12 +74,17 @@ function checkAnswer() {
     if (event.target.textContent === questions[index].answer) {
       scoreCounter += 25;
       score.textContent = scoreCounter;
+      feedback.classList.remove('hide');
+      feedback.innerHTML = 'Correct!';
     } else {
       console.log('wrong')
       timeLeft -= 9;
+      feedback.classList.remove('hide');
+      feedback.innerHTML = 'Wrong!';
     };
     nextQuestion();
   });
+  feedback.classList.add('hide');
 };
 
 // Function to display next question
@@ -103,6 +109,7 @@ function endGame() {
   // Making sure all questions have been answered
   if (index === 4) {
     // Hiding screen and showing screen
+    feedback.classList.add('hide');
     questionScreen.className = 'hide';
     endScreen.classList.remove('hide');
     finalScore.textContent = scoreCounter;
