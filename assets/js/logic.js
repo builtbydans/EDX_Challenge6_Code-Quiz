@@ -3,18 +3,22 @@ var startBtn = document.querySelector('#start');
 var restartBtn = document.querySelector('#restart');
 var timer = document.querySelector('#time');
 var score = document.querySelector('#score');
+
 // Main title, start screen and end screen
 var mainTitle = document.querySelector('#main-title');
 var mainText = document.querySelector('#main-text');
 var startScreen = document.querySelector('#start-screen');
 var endScreen = document.querySelector('#end-screen');
-var finalScore = document.querySelector('#final-score');
+var scoreSubmit = document.querySelector('#submit');
+
 // Question screens
 var questionScreen = document.querySelector('#questions');
 var questionTitle = document.querySelector('#question-title');
 var questionChoices = document.querySelector('.choices');
 var feedback = document.querySelector('.feedback');
 var timeLeft = 60;
+var finalScore = document.querySelector('#final-score');
+
 // Misc variables
 var index = 0;
 var scoreCounter = 0;
@@ -113,8 +117,26 @@ function endGame() {
     questionScreen.className = 'hide';
     endScreen.classList.remove('hide');
     finalScore.textContent = scoreCounter;
-  }
-}
+  };
+};
 
-// Calling functions
-startQuiz()
+function saveScore() {
+  scoreSubmit.addEventListener('click', function(event) {
+    // prevents the form submit
+    event.preventDefault();
+    // saving user initials into an array and into localStorage
+    var userInitials = document.querySelector('#initials').value;
+    users.push(userInitials);
+    localStorage.setItem("user", JSON.stringify(users));
+    // saving user score into an array and into localStorage
+    var finalScore = document.querySelector('#final-score').textContent;
+    userScore.push(finalScore);
+    localStorage.setItem("score", JSON.stringify(userScore));
+    // reloading the game once user has pressed submit
+    location.reload();
+  });
+};
+
+// Executing functions
+startQuiz();
+saveScore();
