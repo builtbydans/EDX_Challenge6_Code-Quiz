@@ -13,8 +13,8 @@ The live project can be found here:
 
 ## Website Screenshot
 
-![screenshot-of-image](https://github.com/builtbydans/EDX_Challenge6_Code-Quiz/blob/main/screenshot.png)
+![screenshot-of-image](https://github.com/builtbydans/EDX_Challenge6_Code-Quiz/blob/main/assets/screenshot.png)
 
-## Room For Improvement
+## Future Considerations
 
-In this challenge, there are many repetitive functions that could better follow DRY principles - in particular, the ability to render questions. Also, there can be a more succint way to do functions i.e use higher order functions, but we have not yet covered these so in the interest of fairness, I have not included them but would be keen to add these in future.
+TBC
