@@ -13,8 +13,5 @@ The live project can be found here:
 
 ## Website Screenshot
 
-![screenshot-of-image](https://github.com/builtbydans/EDX_Challenge6_Code-Quiz/blob/main/assets/screenshot.png)
+![screenshot-of-image](https://github.com/builtbydans/EDX_Challenge6_Code-Quiz/blob/main/screenshot.png)
 
-## Future Considerations
-
-TBC
